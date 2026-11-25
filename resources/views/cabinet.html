@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Личный кабинет</title>
+    <link rel="stylesheet" href="style/cabinet.css">
+</head>
+<body>
+<header>
+    <div class="header-container">
+        <div class="logo">FlexClub</div>
+        <ul class="nav-menu">
+            <li><a href="gyms.html">Залы</a></li>
+            <li><a href="subscription.html">Абонемент</a></li>
+            <li><a href="coaches.html">Тренера</a></li>
+            <li><a href="about.html">О нас</a></li>
+            <li><button class="login-btn">Войти</button></li>
+        </ul>
+    </div>
+</header>
+
+<section class="profile-section">
+    <div class="profile-header">
+            <a class="profile-avatar" aria-label="Одноклассники">
+                <img src="images/anon.png" alt="Одноклассники">
+            </a>
+        <h2 class="profile-name">Имя и Фамилия</h2>
+    </div>
+    <p class="profile-info">Информация об абонементе</p>
+        <div class="profile-card">
+
+            <div class="subscription-badge">
+                Тип абонемента: настраиваемый
+            </div>
+
+            <div class="subscription-stats">
+                <div class="stat-item">
+                    <span class="stat-label">Тренировок осталось:</span>
+                    <span class="stat-value">8</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Месяцев осталось:</span>
+                    <span class="stat-value">0</span>
+                </div>
+            </div>
+        </div>
+</section>
+
+<section class="calendar-section">
+    <div class="container">
+        <h2 class="section-title">Расписание тренировок</h2>
+
+        <div class="calendar">
+            <div class="calendar-header">
+                <button class="nav-arrow left">&lt;</button>
+                <div class="month-year">
+                    <span class="month">Декабрь</span>
+                    <span class="year">2025</span>
+                </div>
+                <button class="nav-arrow right">&gt;</button>
+            </div>
+
+            <table class="calendar-table">
+                <thead>
+                <tr>
+                    <th>Пн</th>
+                    <th>Вт</th>
+                    <th>Ср</th>
+                    <th>Чт</th>
+                    <th>Пт</th>
+                    <th>Сб</th>
+                    <th>Вс</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>10</td>
+                    <td>11</td>
+                    <td>12</td>
+                    <td>13</td>
+                    <td>14</td>
+                </tr>
+                <tr>
+                    <td>15</td>
+                    <td>16</td>
+                    <td>17</td>
+                    <td>18</td>
+                    <td>19</td>
+                    <td>20</td>
+                    <td>21</td>
+                </tr>
+                <tr>
+                    <td>22</td>
+                    <td>23</td>
+                    <td>24</td>
+                    <td>25</td>
+                    <td>26</td>
+                    <td>27</td>
+                    <td>28</td>
+                </tr>
+                <tr>
+                    <td>29</td>
+                    <td>30</td>
+                    <td>31</td>
+                    <td class="next-month">1</td>
+                    <td class="next-month">2</td>
+                    <td class="next-month">3</td>
+                    <td class="next-month">4</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-top">
+            <div class="footer-logo-column">
+                <div class="footer-logo">FlexClub</div>
+                <div class="footer-subtitle">Тренажерные залы в Томске</div>
+            </div>
+
+            <nav class="footer-nav">
+                <a href="coaches.html">Тренера</a>
+                <a href="subscription.html">Абонемент</a>
+                <a href="about.html">О нас</a>
+                <a href="cabinet.html">Личный кабинет</a>
+                <a href="gyms.html">Залы</a>
+            </nav>
+
+            <div class="footer-social">
+                <a href="https://ok.ru/" class="social-icon" aria-label="Одноклассники">
+                    <img src="images/svg/odnoklassniki.svg" alt="Одноклассники">
+                </a>
+                <a href="https://vk.com/" class="social-icon" aria-label="ВКонтакте">
+                    <img src="images/svg/vk.svg" alt="ВКонтакте">
+                </a>
+                <a href="https://max.ru/" class="social-icon" aria-label="MAX">
+                    <img src="images/svg/max.svg" alt="MAX">
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-divider"></div>
+
+        <div class="footer-bottom">
+            <div class="copyright">
+                Copyright 2025–2025 Тренажерный зал FlexClub
+            </div>
+            <div class="privacy-link">
+                <a href="#">Политика конфиденциальности</a>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
