@@ -1,0 +1,32 @@
+<?php
+
+return [
+    'required' => 'Заполните поле «:attribute».',
+    'required_if' => 'Заполните поле «:attribute».',
+    'confirmed' => 'Пароль и подтверждение должны совпадать.',
+    'email' => 'Укажите корректный email.',
+    'unique' => 'Значение поля «:attribute» уже используется.',
+    'string' => 'В поле «:attribute» введите текст.',
+    'integer' => 'В поле «:attribute» введите целое число.',
+    'boolean' => 'Поле «:attribute» должно содержать значение да или нет.',
+    'date_format' => 'Проверьте формат даты в поле «:attribute».',
+    'after' => 'Дата в поле «:attribute» должна быть позже «:date».',
+    'before' => 'Дата в поле «:attribute» должна быть раньше «:date».',
+    'between' => ['numeric' => 'Введите для поля «:attribute» число от :min до :max.'],
+    'min' => ['numeric' => 'Минимум для поля «:attribute» — :min.', 'string' => 'Поле «:attribute» должно содержать минимум :min символов.'],
+    'max' => ['numeric' => 'Максимум для поля «:attribute» — :max.', 'string' => 'Поле «:attribute» должно содержать максимум :max символов.'],
+    'in' => 'Выберите допустимое значение поля «:attribute».',
+    'exists' => 'Значение поля «:attribute» недоступно.',
+    'array' => 'Проверьте список «:attribute».',
+    'distinct' => 'Значения поля «:attribute» должны различаться.',
+    'regex' => 'Проверьте допустимый формат поля «:attribute».',
+    'attributes' => [
+        'name' => 'имя', 'email' => 'email', 'password' => 'пароль', 'body' => 'сообщение',
+        'gym_id' => 'филиал', 'plan_id' => 'тариф', 'trainer_id' => 'тренер', 'user_id' => 'учётная запись',
+        'duration_months' => 'срок в месяцах', 'visits_per_month' => 'тренировок в месяц',
+        'visits_limit' => 'лимит тренировок', 'price_kopecks' => 'цена в копейках', 'rejection_reason' => 'причина отказа',
+        'start_on' => 'дата начала', 'starts_at' => 'начало тренировки', 'ends_at' => 'окончание тренировки',
+        'address' => 'адрес', 'description' => 'описание', 'capacity' => 'вместимость', 'specialty' => 'специализация',
+        'image_path' => 'путь к фотографии', 'photo_path' => 'путь к фотографии', 'title' => 'название',
+    ],
+];

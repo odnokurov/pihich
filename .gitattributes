@@ -7,5 +7,7 @@
 *.php diff=php
 
 /.github export-ignore
+/.composer export-ignore
+storage/.websrv-api-installed export-ignore
 CHANGELOG.md export-ignore
 .styleci.yml export-ignore
