@@ -41,12 +41,6 @@ a.logo { text-decoration: none; }
 .form-stack label.check { display: flex; align-items: center; }
 .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 1rem; }
 .card-grid > * { min-width: 0; }
-.workspace .coach-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); }
-.workspace .coach-card { width: 100%; max-width: 100%; }
-.workspace .coach-image-wrapper { max-width: 100%; height: auto; aspect-ratio: 5 / 6; }
-.workspace .coach-image { max-width: 100%; }
-.workspace .coach-name { font-size: clamp(1.25rem, 3vw, 2rem); }
-.workspace .coach-location { font-size: 1rem; white-space: normal; }
 .panel { background: #f2f4f7; border-radius: 1rem; padding: 1rem; margin-block: .75rem; overflow-wrap: anywhere; }
 .panel p { margin-block: .4rem; }
 .panel summary { cursor: pointer; font-weight: 700; }
@@ -61,12 +55,93 @@ a.logo { text-decoration: none; }
 .calendar-table a { display: inline-grid; place-items: center; min-width: 2rem; min-height: 2rem; color: #9f160c; }
 .date-list { scroll-margin-top: 7rem; }
 .message { white-space: pre-wrap; overflow-wrap: anywhere; }
-.login-section .form-stack { text-align: left; }
-.login-section .action { justify-self: center; }
 .workspace .custom-card { margin-block: 1rem 2rem; }
-.workspace .coach-card { overflow-wrap: anywhere; }
-.workspace .coach-card .action { margin-top: .7rem; }
 .gym-photo { display: block; max-width: 100%; border-radius: 1rem; margin-block: 1rem; }
+.catalog-section { width: min(1680px, calc(100% - 32px)); margin-inline: auto; }
+.catalog-section .section-title, .workspace > .section-title { font-size: clamp(2rem, 5vw, 4.5rem); }
+.catalog-section .container { padding: clamp(1rem, 3vw, 2.5rem); }
+.catalog-section .branches-title { padding: 0; text-align: center; }
+.catalog-section .branches-switcher, .branches-banner-switcher { flex-wrap: wrap; }
+.branch-radio, .branch-radio-banner { text-decoration: none; display: inline-block; }
+.catalog-section .branch-card { padding: 0; gap: clamp(1rem, 4vw, 3.5rem); }
+.catalog-section .branch-card-image { width: 52%; height: auto; aspect-ratio: 4 / 3; }
+.catalog-section .branch-card-text { min-width: 0; font-size: clamp(1.2rem, 2.5vw, 2.25rem); }
+.branch-card-text .action { margin-top: 1rem; font-size: 1rem; }
+.catalog-section .subscriptions-header { flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; padding: 0; }
+.catalog-section .subscriptions-title { max-width: none; }
+.catalog-section .custom-title { font-size: clamp(1.5rem, 3vw, 2.75rem); }
+.catalog-section .custom-link { font-size: clamp(1rem, 2vw, 1.65rem); }
+.catalog-section .coach-grid, .workspace .subscription-cards, .catalog-section .subscription-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 275px), 1fr));
+    gap: clamp(1rem, 2.4vw, 2.5rem);
+}
+.workspace .subscription-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.workspace .subscription-card, .catalog-section .subscription-card {
+    width: 100%;
+    min-width: 0;
+    height: auto;
+    min-height: 300px;
+    gap: 1rem;
+    padding: clamp(1rem, 3vw, 2.25rem);
+}
+.workspace .subscription-name, .catalog-section .subscription-name { font-size: clamp(1.2rem, 2.4vw, 2rem); margin: 0; }
+.workspace .subscription-desc, .catalog-section .subscription-desc { font-size: 1rem; padding: 0; }
+.workspace .subscription-price, .catalog-section .subscription-price { font-size: clamp(1.75rem, 3.5vw, 3rem); margin: 0; }
+.workspace .subscribe-btn, .catalog-section .subscribe-btn {
+    text-decoration: none;
+    width: auto;
+    padding: .75rem 1.25rem;
+    font-size: 1rem;
+}
+.catalog-section .coach-card { width: 100%; min-width: 0; padding: clamp(1rem, 2.5vw, 2rem); gap: .5rem; overflow-wrap: anywhere; }
+.catalog-section .coach-image-wrapper { width: 100%; height: auto; aspect-ratio: 4 / 5; margin: 0 0 .5rem; }
+.catalog-section .coach-name { padding: 0; margin: 0; font-size: clamp(1.3rem, 2.5vw, 2rem); }
+.catalog-section .coach-location { padding: .35rem .75rem; white-space: normal; font-size: clamp(.875rem, 1.4vw, 1.25rem); }
+.catalog-footer { text-align: center; margin-top: 1.5rem; }
+.catalog-section[id] { scroll-margin-top: 6rem; }
+.workspace #plan-options input[type=range] { background: transparent; border: 0; padding: 0; }
+#plan-options output { font-weight: 700; }
+.gym-details { background: #f2f4f7; padding: clamp(1rem, 3vw, 2.25rem); border-radius: 1.5rem; }
+.gym-details h2 { margin-top: 0; }
+.gym-details p { line-height: 1.5; }
+.gym-details .filter { margin-bottom: 0; }
+.outline-action, .cabinet-nav a {
+    display: inline-block;
+    color: #a6150b;
+    background: #fff;
+    border: 1px solid #a6150b;
+    border-radius: 24px;
+    padding: .6rem 1rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+.outline-action:hover, .cabinet-nav a:hover { background: #fff1ef; }
+.login-section .login-title { font-size: clamp(1.75rem, 5vw, 3.5rem); margin-bottom: clamp(1.35rem, 3vw, 3rem); }
+.login-section .input-group { display: grid; gap: .35rem; text-align: left; font-weight: 600; }
+.login-section .input-group input { padding: .85rem 1.2rem; font-size: clamp(1rem, 2.5vw, 1.375rem); text-align: left; }
+.login-section .input-group input:focus-visible { outline: 2px solid #c51609; outline-offset: 2px; }
+.login-section .login-btn-card { font-size: clamp(1rem, 2.5vw, 1.5rem); margin-bottom: 0; }
+.cabinet-heading { display: flex; flex-wrap: wrap; gap: .75rem 1.5rem; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+.client-cabinet .cabinet-heading h2 { margin: 0; }
+.client-cabinet h2 { font-size: clamp(1.4rem, 3.5vw, 2.25rem); }
+.client-cabinet .profile-card { padding: clamp(1rem, 4vw, 2.5rem); margin-bottom: .75rem; }
+.client-cabinet .profile-card p { line-height: 1.5; }
+.client-cabinet .subscription-badge { margin-bottom: .5rem; font-size: clamp(1.1rem, 2.5vw, 1.5rem); }
+.client-cabinet .subscription-stats { margin-top: .75rem; }
+.client-cabinet .stat-label, .client-cabinet .stat-value { font-size: clamp(1rem, 2.5vw, 1.3rem); }
+.client-cabinet .calendar { background: #f4f6f8; }
+.client-cabinet .calendar .month-year { text-transform: capitalize; }
+@media (max-width: 920px) {
+    .workspace .subscription-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 580px) {
+    .workspace .subscription-cards { grid-template-columns: minmax(0, 1fr); }
+    .catalog-section .branch-card { flex-direction: column; align-items: stretch; }
+    .catalog-section .branch-card-image { width: 100%; }
+    .catalog-section .branch-radio, .branch-radio-banner { padding: .55rem .9rem; font-size: 1rem; }
+    .branches-banner-switcher { gap: .5rem; }
+}
 @media (max-width: 720px) {
     header { position: static; }
     .header-container { flex-wrap: wrap; gap: .75rem; }

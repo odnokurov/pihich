@@ -11,6 +11,8 @@ function updateQuote() {
     const custom = plan.dataset.kind === 'custom';
     options.hidden = !custom;
     options.disabled = !custom;
+    form.querySelector('output[for="duration-months"]').value = months.value;
+    form.querySelector('output[for="visits-per-month"]').value = visits.value;
     if (custom && (!months.validity.valid || !visits.validity.valid)) {
         summary.textContent = 'Укажите от 1 до 24 тренировок в месяц и срок от 1 до 12 месяцев.';
         price.textContent = '';

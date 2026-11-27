@@ -9,11 +9,15 @@ use Illuminate\Http\Request;
 
 class CatalogController extends Controller
 {
-    public function home()
+    public function home(Request $request)
     {
+        $gyms = Gym::where('is_active', true)->orderBy('id')->get();
+
         return view('index', [
-            'gyms' => Gym::where('is_active', true)->orderBy('id')->get(),
+            'gyms' => $gyms,
+            'selectedGym' => $gyms->firstWhere('id', $request->integer('gym')) ?? $gyms->first(),
             'plans' => Plan::where('is_active', true)->where('kind', 'fixed')->orderBy('id')->limit(3)->get(),
+            'customPlan' => Plan::where('is_active', true)->where('kind', 'custom')->orderBy('id')->first(),
             'trainers' => Trainer::where('is_active', true)->whereHas('activeGyms')
                 ->with(['user', 'activeGyms'])->orderBy('id')->limit(3)->get(),
         ]);
@@ -51,7 +55,8 @@ class CatalogController extends Controller
         return view('subscription', [
             'gyms' => $gyms, 'plans' => $plans,
             'selectedGym' => $gyms->firstWhere('id', (int) old('gym_id', $request->integer('gym_id'))) ?? $gyms->first(),
-            'selectedPlan' => $plans->firstWhere('id', (int) old('plan_id', $request->integer('plan_id'))) ?? $plans->first(),
+            'selectedPlan' => $plans->firstWhere('id', (int) old('plan_id', $request->integer('plan_id')))
+                ?? $plans->firstWhere('kind', 'custom') ?? $plans->first(),
             'months' => max(1, min(12, (int) old('duration_months', $request->integer('duration_months', 1)))),
             'visits' => max(1, min(24, (int) old('visits_per_month', $request->integer('visits_per_month', 4)))),
         ]);

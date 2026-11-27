@@ -10,12 +10,12 @@
     $leading = $month->dayOfWeekIso - 1;
     $weeks = (int) ceil(($leading + $month->daysInMonth) / 7);
 @endphp
-<div class="workspace">
+<div class="workspace client-cabinet">
     <div class="profile-header">
         <span class="profile-avatar"><img src="{{ asset('images/anon.png') }}" alt=""></span>
         <h1 class="profile-name">{{ auth()->user()->name }}</h1>
     </div>
-    <nav aria-label="Разделы кабинета" class="filter">
+    <nav aria-label="Разделы кабинета" class="filter cabinet-nav">
         <a href="#memberships">Абонементы</a>
         <a href="#schedule">Расписание</a>
         <a href="#bookings">Мои тренировки</a>
@@ -23,21 +23,25 @@
         <a href="{{ route('chat.index') }}">Чат</a>
     </nav>
     <section id="memberships" class="date-list">
-        <h2>Заявки и абонементы</h2>
-        <a class="action" href="{{ route('plans') }}">Выбрать абонемент</a>
+        <div class="cabinet-heading">
+            <h2>Заявки и абонементы</h2>
+            <a class="action" href="{{ route('plans') }}">Выбрать абонемент</a>
+        </div>
         @forelse ($applications as $application)
-            <article class="panel">
-                <h3>{{ $application->plan->name }} · {{ $application->gym->name }}</h3>
+            <article class="profile-card">
+                <h3 class="subscription-badge">{{ $application->plan->name }} · {{ $application->gym->name }}</h3>
                 <p>{{ $memberships[$application->status] }} · {{ number_format($application->price_kopecks / 100, 2, ',', ' ') }} ₽ · Лимит {{ $application->visits_limit }}</p>
                 @if ($application->status === 'approved')
                     <p>{{ $application->start_on }} — {{ $application->end_on }} (дата окончания не входит в срок)</p>
-                    <p>Остаток тренировок: {{ max(0, $application->visits_limit - $application->used_visits) }}</p>
+                    <div class="subscription-stats">
+                        <p class="stat-item"><span class="stat-label">Остаток тренировок:</span> <strong class="stat-value">{{ max(0, $application->visits_limit - $application->used_visits) }}</strong></p>
+                    </div>
                 @elseif ($application->status === 'rejected')
                     <p>Причина отказа: {{ $application->rejection_reason }}</p>
                 @endif
             </article>
         @empty
-            <p>У вас пока нет заявок.</p>
+            <p class="profile-card">У вас пока нет заявок.</p>
         @endforelse
         @include('partials.pagination', ['paginator' => $applications])
     </section>
@@ -58,7 +62,7 @@
             <div class="calendar">
                 <div class="calendar-header">
                     <a class="nav-arrow" aria-label="Предыдущий месяц" href="{{ route('cabinet', ['gym' => $gym->id, 'month' => $month->subMonth()->format('Y-m')]) }}#schedule">‹</a>
-                    <strong>{{ $month->locale('ru')->isoFormat('MMMM YYYY') }}</strong>
+                    <strong class="month-year">{{ $month->locale('ru')->isoFormat('MMMM YYYY') }}</strong>
                     <a class="nav-arrow" aria-label="Следующий месяц" href="{{ route('cabinet', ['gym' => $gym->id, 'month' => $month->addMonth()->format('Y-m')]) }}#schedule">›</a>
                 </div>
                 <table class="calendar-table" aria-label="Календарь тренировок">
