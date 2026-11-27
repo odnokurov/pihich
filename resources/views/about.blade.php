@@ -1,24 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>О нас</title>
-    <link rel="stylesheet" href="style/about.css">
-</head>
-<body>
-<header>
-    <div class="header-container">
-        <div class="logo">FlexClub</div>
-        <ul class="nav-menu">
-            <li><a href="gyms.html">Залы</a></li>
-            <li><a href="subscription.html">Абонемент</a></li>
-            <li><a href="coaches.html">Тренера</a></li>
-            <li><a href="about.html">О нас</a></li>
-            <li><button class="login-btn">Войти</button></li>
-        </ul>
-    </div>
-</header>
-
+@extends('layout')
+@section('title', 'О нас')
+@section('style', 'about')
+@section('content')
 <section class="branches-banner-section container">
     <div class="branches-banner-container">
         <h2 class="branches-banner-title">FlexClub</h2>
@@ -49,7 +32,7 @@
             <div class="principles-grid">
                 <div class="principle-item">
                     <a class="principle-icon">
-                        <img src="images/svg/principle-1.svg" alt="">
+                        <img src="{{ asset('images/svg/principle-1.svg') }}" alt="">
                     </a>
                     <p class="principle-text">
                         Серьезная подготовка<br>
@@ -63,7 +46,7 @@
 
                 <div class="principle-item">
                     <a class="principle-icon">
-                        <img src="images/svg/principle-2.svg" alt="">
+                        <img src="{{ asset('images/svg/principle-2.svg') }}" alt="">
                     </a>
                     <p class="principle-text">
                         Постоянный<br>
@@ -77,7 +60,7 @@
 
                 <div class="principle-item">
                     <a class="principle-icon">
-                        <img src="images/svg/principle-3.svg" alt="">
+                        <img src="{{ asset('images/svg/principle-3.svg') }}" alt="">
                     </a>
                     <p class="principle-text">
                         Создание дружеской<br>
@@ -97,68 +80,25 @@
 
         <div class="priorities-grid">
             <div class="priority-card">
-                <img src="images/about/priorities-1.png" alt="Профессионально оборудованные тренировочные зоны" class="priority-image">
+                <img src="{{ asset('images/about/priorities-1.png') }}" alt="Профессионально оборудованные тренировочные зоны" class="priority-image">
                 <p class="priority-text">Профессионально оборудованные тренировочные зоны с современным инвентарём</p>
             </div>
 
             <div class="priority-card">
-                <img src="images/about/priorities-2.png" alt="Разнообразные программы для гармоничного развития тела" class="priority-image">
+                <img src="{{ asset('images/about/priorities-2.png') }}" alt="Разнообразные программы для гармоничного развития тела" class="priority-image">
                 <p class="priority-text">Разнообразные программы для гармоничного развития тела</p>
             </div>
 
             <div class="priority-card">
-                <img src="images/about/priorities-3.png" alt="Индивидуальный подход и ориентированность на конкретные цели клиента" class="priority-image">
+                <img src="{{ asset('images/about/priorities-3.png') }}" alt="Индивидуальный подход и ориентированность на конкретные цели клиента" class="priority-image">
                 <p class="priority-text">Индивидуальный подход и ориентированность на конкретные цели клиента</p>
             </div>
 
             <div class="priority-card">
-                <img src="images/about/priorities-4.png" alt="Доброжелательная атмосфера и хорошая музыка для полного погружения" class="priority-image">
+                <img src="{{ asset('images/about/priorities-4.png') }}" alt="Доброжелательная атмосфера и хорошая музыка для полного погружения" class="priority-image">
                 <p class="priority-text">Доброжелательная атмосфера и хорошая музыка для полного погружения</p>
             </div>
         </div>
     </div>
 </section>
-
-<footer class="footer">
-    <div class="container">
-        <div class="footer-top">
-            <div class="footer-logo-column">
-                <div class="footer-logo">FlexClub</div>
-                <div class="footer-subtitle">Тренажерные залы в Томске</div>
-            </div>
-
-            <nav class="footer-nav">
-                <a href="coaches.html">Тренера</a>
-                <a href="subscription.html">Абонемент</a>
-                <a href="about.html">О нас</a>
-                <a href="cabinet.html">Личный кабинет</a>
-                <a href="gyms.html">Залы</a>
-            </nav>
-
-            <div class="footer-social">
-                <a href="https://ok.ru/" class="social-icon" aria-label="Одноклассники">
-                    <img src="images/svg/odnoklassniki.svg" alt="Одноклассники">
-                </a>
-                <a href="https://vk.com/" class="social-icon" aria-label="ВКонтакте">
-                    <img src="images/svg/vk.svg" alt="ВКонтакте">
-                </a>
-                <a href="https://max.ru/" class="social-icon" aria-label="MAX">
-                    <img src="images/svg/max.svg" alt="MAX">
-                </a>
-            </div>
-        </div>
-
-        <div class="footer-divider"></div>
-
-        <div class="footer-bottom">
-            <div class="copyright">
-                Copyright 2025–2025 Тренажерный зал FlexClub
-            </div>
-            <div class="privacy-link">
-                <a href="#">Политика конфиденциальности</a>
-            </div>
-        </div>
-    </div>
-</footer>
-</body>
-</html>
+@endsection
