@@ -7,7 +7,7 @@
             <h1 class="branches-banner-title">Наши тренеры</h1>
         </div>
     </section>
-    <section class="workspace">
+    <section class="section coach-section catalog-section">
         <form method="get" class="filter">
             <label>Филиал
                 <select name="gym">
@@ -19,7 +19,7 @@
             </label>
             <button class="action">Показать</button>
         </form>
-        <div class="coach-grid card-grid">
+        <div class="coach-grid">
             @forelse ($trainers as $trainer)
                 @include('partials.trainer')
             @empty

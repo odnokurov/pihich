@@ -12,32 +12,51 @@
 </section>
 
 
-<section class="workspace">
-    <h2>Наши филиалы</h2>
-    <div class="card-grid">
-        @forelse ($gyms as $gym)
-            <article class="panel">
-                <h3>{{ $gym->name }}</h3>
-                <p>{{ $gym->address }}</p>
-                <a href="{{ route('gyms', ['gym' => $gym->id]) }}">О филиале</a>
-            </article>
-        @empty
+<section class="branches-section catalog-section" id="branches">
+    <div class="container">
+        <h2 class="section-title branches-title">Наши филиалы</h2>
+        @if ($selectedGym)
+            <div class="branches-switcher" aria-label="Выбор филиала">
+                @foreach ($gyms as $gym)
+                    <a class="branch-radio @if($gym->id === $selectedGym->id) active @endif"
+                       @if($gym->id === $selectedGym->id) aria-current="true" @endif
+                       href="{{ route('home', ['gym' => $gym->id]) }}#branches">{{ $gym->name }}</a>
+                @endforeach
+            </div>
+            <div class="branch-card">
+                <img src="{{ asset($selectedGym->image_path ?: 'images/index/branch.png') }}" alt="Интерьер зала" class="branch-card-image">
+                <div class="branch-card-text">
+                    <h3>{{ $selectedGym->name }}</h3>
+                    <p>{{ $selectedGym->address }}</p>
+                    @if ($selectedGym->description)
+                        <p>{{ $selectedGym->description }}</p>
+                    @endif
+                    <a class="action" href="{{ route('gyms', ['gym' => $selectedGym->id]) }}">О филиале</a>
+                </div>
+            </div>
+        @else
             <p>Нет доступных филиалов.</p>
-        @endforelse
+        @endif
     </div>
-    <h2>Наши абонементы</h2>
-    <div class="card-grid">
-        @forelse ($plans as $plan)
-            <article class="panel">
-                <h3>{{ $plan->name }}</h3>
-                <p>{{ number_format($plan->price_kopecks / 100, $plan->price_kopecks % 100 ? 2 : 0, ',', ' ') }} ₽</p>
-                <a href="{{ route('plans', ['plan_id' => $plan->id]) }}">Выбрать</a>
-            </article>
-        @empty
-            <p>Нет доступных пакетов.</p>
-        @endforelse
+</section>
+<section class="catalog-section">
+    <div class="container">
+        <div class="subscriptions-header">
+            <h2 class="section-title subscriptions-title">Наши абонементы</h2>
+            @if ($selectedGym)
+                <span class="switcher-label">{{ $selectedGym->name }}</span>
+            @endif
+        </div>
+        @include('partials.plan-cards')
+        <div class="custom-subscription">
+            @if ($customPlan)
+                <h3 class="custom-title">Не нашли подходящий абонемент?</h3>
+                <a class="custom-link" href="{{ route('plans', ['plan_id' => $customPlan->id, 'gym_id' => $selectedGym?->id]) }}">Составить свой абонемент</a>
+            @else
+                <a class="custom-link" href="{{ route('plans', ['gym_id' => $selectedGym?->id]) }}">Все тарифы</a>
+            @endif
+        </div>
     </div>
-    <p class="filter"><a href="{{ route('plans') }}">Все тарифы и конструктор</a></p>
 </section>
 <section class="services-section">
 
@@ -75,15 +94,15 @@
             </div>
         </div>
 </section>
-<section class="workspace">
-    <h2>Наши тренеры</h2>
-    <div class="card-grid">
+<section class="section coach-section catalog-section">
+    <h2 class="section-title trainers-title">Наши тренеры</h2>
+    <div class="coach-grid">
         @forelse ($trainers as $trainer)
             @include('partials.trainer')
         @empty
             <p>Карточки тренеров пока не добавлены.</p>
         @endforelse
     </div>
-    <p class="filter"><a href="{{ route('trainers') }}">Все тренеры</a></p>
+    <p class="catalog-footer"><a class="action" href="{{ route('trainers') }}">Все тренеры</a></p>
 </section>
 @endsection

@@ -23,8 +23,8 @@ class DemoSeeder extends Seeder
         }
 
         DB::transaction(function () {
-            if (User::exists() || TrainingSlot::exists()) {
-                throw new RuntimeException('Учебные данные загружаются только в новую базу без пользователей и тренировок.');
+            if (User::where('role', '!=', 'trainer')->exists() || TrainingSlot::exists()) {
+                throw new RuntimeException('Учебные данные загружаются только в новую базу без клиентов, администраторов и тренировок.');
             }
 
             $gyms = Gym::orderBy('id')->get();

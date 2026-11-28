@@ -35,10 +35,12 @@
                 <fieldset class="form-stack" id="plan-options" @if($selectedPlan->kind !== 'custom') hidden @endif>
                     <legend>Настройте абонемент</legend>
                     <label>Тренировок в месяц
-                        <input type="number" name="visits_per_month" min="1" max="24" value="{{ $visits }}" required>
+                        <input type="range" class="custom-slider" id="visits-per-month" name="visits_per_month" min="1" max="24" value="{{ $visits }}" required>
+                        <output for="visits-per-month">{{ $visits }}</output>
                     </label>
                     <label>Месяцев
-                        <input type="number" name="duration_months" min="1" max="12" value="{{ $months }}" required>
+                        <input type="range" class="custom-slider" id="duration-months" name="duration_months" min="1" max="12" value="{{ $months }}" required>
+                        <output for="duration-months">{{ $months }}</output>
                     </label>
                 </fieldset>
                 <p id="plan-summary" aria-live="polite">Срок {{ $quote['duration_months'] ? $quote['duration_months'].' мес.' : '1 день' }} · Тренировок {{ $quote['visits_limit'] }}</p>
@@ -47,16 +49,8 @@
                     <button class="action">{{ auth()->guest() ? 'Войти для оформления' : 'Подать заявку' }}</button>
                 @endif
             </form>
-            <div class="subscription-cards card-grid">
-                @foreach ($plans->where('kind', 'fixed') as $plan)
-                    <article class="subscription-card">
-                        <h2 class="subscription-name">{{ $plan->name }}</h2>
-                        <p>Лимит тренировок {{ $plan->visits_limit }} · {{ $plan->duration_months ? $plan->duration_months.' мес.' : '1 день' }}</p>
-                        <p class="subscription-price">{{ number_format($plan->price_kopecks / 100, $plan->price_kopecks % 100 ? 2 : 0, ',', ' ') }} ₽</p>
-                        <a class="action plan-choice" href="{{ route('plans', ['plan_id' => $plan->id, 'gym_id' => $selectedGym->id]) }}" data-plan="{{ $plan->id }}">Выбрать</a>
-                    </article>
-                @endforeach
-            </div>
+            <h2 class="section-title">Готовые абонементы</h2>
+            @include('partials.plan-cards')
         @endif
     </section>
 @endsection

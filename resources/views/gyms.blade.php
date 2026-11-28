@@ -6,24 +6,23 @@
     <div class="branches-banner-container">
         <h1 class="branches-banner-title">Наши залы</h1>
         @if ($selectedGym)
-            <form class="filter" method="get">
-                <label>Филиал
-                    <select name="gym">
-                        @foreach ($gyms as $gym)
-                            <option value="{{ $gym->id }}" @selected($gym->id === $selectedGym->id)>{{ $gym->name }}</option>
-                        @endforeach
-                    </select>
-                </label>
-                <button class="action">Показать</button>
-            </form>
-            <p>{{ $selectedGym->address }}</p>
+            <p class="branches-banner-subtitle">Выберите филиал</p>
+            <div class="branches-banner-switcher" aria-label="Выбор филиала">
+                @foreach ($gyms as $gym)
+                    <a class="branch-radio-banner @if($gym->id === $selectedGym->id) active @endif"
+                       @if($gym->id === $selectedGym->id) aria-current="true" @endif
+                       href="{{ route('gyms', ['gym' => $gym->id]) }}">{{ $gym->name }}</a>
+                @endforeach
+            </div>
         @else
             <p>Нет доступных филиалов.</p>
         @endif
     </div>
 </section>
 @if ($selectedGym)
-    <section class="workspace">
+    <section class="workspace gym-details">
+        <h2>{{ $selectedGym->name }}</h2>
+        <p>{{ $selectedGym->address }}</p>
         @if ($selectedGym->description)
             <p>{{ $selectedGym->description }}</p>
         @endif
@@ -31,8 +30,8 @@
             <img class="gym-photo" src="{{ asset($selectedGym->image_path) }}" alt="{{ $selectedGym->name }}">
         @endif
         <p class="filter">
-            <a href="{{ route('trainers', ['gym' => $selectedGym->id]) }}">Тренеры филиала</a>
-            <a href="{{ route('plans', ['gym_id' => $selectedGym->id]) }}">Выбрать абонемент</a>
+            <a class="outline-action" href="{{ route('trainers', ['gym' => $selectedGym->id]) }}">Тренеры филиала</a>
+            <a class="action" href="{{ route('plans', ['gym_id' => $selectedGym->id]) }}">Выбрать абонемент</a>
         </p>
     </section>
 @endif
